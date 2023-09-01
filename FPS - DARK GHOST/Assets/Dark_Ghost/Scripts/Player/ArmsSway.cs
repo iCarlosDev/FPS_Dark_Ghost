@@ -3,33 +3,53 @@ using UnityEngine;
 
 public class ArmsSway : MonoBehaviour
 {
-    [SerializeField] private PlayerCore _playerCore;
-    
-    [Header("=== SWAY PARAMETERS ===")] 
-    [Space(10)] 
-    [SerializeField] private float _smooth;
-    [SerializeField] private float _swayMultiplier;
+    [SerializeField] public Transform weaponTransform;
 
-    private void Awake()
+    [Header("=== SWAY PARAMETERS ===")]
+    [SerializeField]private float swayAmount = 0.01f;
+    [SerializeField] public float maxSwayAmount = 0.1f;
+    [SerializeField] public float swaySmooth = 9f;
+    [SerializeField] public AnimationCurve swayCurve;
+
+    [Range(0f, 1f)]
+    [SerializeField] public float swaySmoothCounteraction = 1f;
+
+    [Header("=== ROTATION ===")]
+    [SerializeField] public float rotationSwayMultiplier = 1f;
+
+    [Header("=== POSITION ===")]
+    [SerializeField] public float positionSwayMultiplier = -1f;
+    
+
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
+    private Vector2 sway;
+
+    private void Reset()
     {
-        _playerCore = GetComponentInParent<PlayerCore>();
+        Keyframe[] ks = new Keyframe[] { new Keyframe(0, 0, 0, 2), new Keyframe(1, 1) };
+        swayCurve = new AnimationCurve(ks);
+    }
+
+    private void Start()
+    {
+        if (!weaponTransform)
+        {
+            weaponTransform = transform;
+            initialPosition = weaponTransform.localPosition; 
+            initialRotation = weaponTransform.localRotation;  
+        }
     }
 
     private void Update()
     {
-        Sway();
-    }
+        float mouseX = Input.GetAxis("Mouse X") * swayAmount;
+        float mouseY = Input.GetAxis("Mouse Y") * swayAmount;
 
-    private void Sway()
-    {
-        float mouseX = _playerCore.PlayerIa.Camera.MouseX.ReadValue<float>() * _swayMultiplier;
-        float mouseY = _playerCore.PlayerIa.Camera.MouseY.ReadValue<float>() * _swayMultiplier;
+        sway = Vector2.MoveTowards(sway, Vector2.zero, swayCurve.Evaluate(Time.deltaTime * swaySmoothCounteraction * sway.magnitude * swaySmooth));
+        sway = Vector2.ClampMagnitude(new Vector2(mouseX, mouseY) + sway, maxSwayAmount);
 
-        Quaternion rotationX = Quaternion.AngleAxis(-mouseY, Vector3.right);
-        Quaternion rotationY = Quaternion.AngleAxis(mouseX, Vector3.up);
-
-        Quaternion targetRotation = rotationX * rotationY;
-
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, _smooth * Time.deltaTime);
+        weaponTransform.localPosition = Vector3.Lerp(weaponTransform.localPosition, new Vector3(sway.x, sway.y, 0) * positionSwayMultiplier + initialPosition, swayCurve.Evaluate(Time.deltaTime * swaySmooth));
+        weaponTransform.localRotation = Quaternion.Slerp(transform.localRotation, initialRotation * Quaternion.Euler(Mathf.Rad2Deg * rotationSwayMultiplier * new Vector3(-sway.y, sway.x, 0)), swayCurve.Evaluate(Time.deltaTime * swaySmooth));
     }
 }

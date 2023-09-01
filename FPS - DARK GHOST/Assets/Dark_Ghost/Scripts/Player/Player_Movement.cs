@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
@@ -93,6 +92,9 @@ public class Player_Movement : MonoBehaviour
 
     #region - ACTIONS -
     
+    /// <summary>
+    /// Método para mover al player;
+    /// </summary>
     private void MovePlayer()
     {
         _horizontalInput = _playerCore.PlayerIa.Movement.WASD.ReadValue<Vector2>().x;
@@ -103,6 +105,9 @@ public class Player_Movement : MonoBehaviour
         _playerCore.CharacterController.Move(direction.normalized * Time.deltaTime * _currentSpeed);
     }
 
+    /// <summary>
+    /// Método para que el player salte;
+    /// </summary>
     private void Jump()
     {
         if (!_isGrounded || !_playerCore.PlayerIa.Movement.Jump.triggered) return;
@@ -116,18 +121,27 @@ public class Player_Movement : MonoBehaviour
         velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
     }
 
+    /// <summary>
+    /// Método para que el player esté de pie;
+    /// </summary>
     private void Stand()
     {
         _playerCore.CharacterController.height = _standHeight;
         _isCrouching = false;
     }
 
+    /// <summary>
+    /// Método para que el player esté agachado;
+    /// </summary>
     private void Crouch()
     {
         _playerCore.CharacterController.height = _crouchHeight;
         _isCrouching = true;
     }
 
+    /// <summary>
+    /// Método para empezar a deslizarte;
+    /// </summary>
     private void StartSlide()
     {
         _isSliding = true;
@@ -135,6 +149,9 @@ public class Player_Movement : MonoBehaviour
         _slideTimer = _maxSlideTime;
     }
     
+    /// <summary>
+    /// Método para parar de deslizarse;
+    /// </summary>
     private void StopSliding()
     {
         _isSliding = false;
@@ -148,6 +165,9 @@ public class Player_Movement : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Método para deslizarte;
+    /// </summary>
     private void SlidingMovement()
     {
         Vector3 inputDirection = transform.forward * _verticalInput + transform.right * _horizontalInput;
@@ -161,11 +181,17 @@ public class Player_Movement : MonoBehaviour
 
     #region - CALCULATIONS -
 
+    /// <summary>
+    /// Método para saber cuando el player está en el suelo;
+    /// </summary>
     private void CheckGround()
     {
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, _checkGroundDistance, _groundMask);
     }
 
+    /// <summary>
+    /// Método que dependiendo del estado en el que se encuentre el player cambiará la velocidad de este;
+    /// </summary>
     private void SetSpeed()
     {
         switch (_isGrounded)
@@ -195,6 +221,9 @@ public class Player_Movement : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Método para setear la posición del player entre "de pie" y "agachado";
+    /// </summary>
     private void SetPlayerPosition()
     {
         switch (_isGrounded)
@@ -204,6 +233,9 @@ public class Player_Movement : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Método para que la gravedad afecte al player;
+    /// </summary>
     private void UseGravity()
     {
         if (_isGrounded && velocity.y < 0)

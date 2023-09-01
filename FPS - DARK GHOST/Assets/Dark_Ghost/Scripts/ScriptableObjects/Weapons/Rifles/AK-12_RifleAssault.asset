@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa78ece0eeae6848a41b447d626e5cd, type: 3}
+  m_Name: AK-12_RifleAssault
+  m_EditorClassIdentifier: 
+  _leftHandPosition: {x: -0.139, y: 1.36, z: -0.03}
+  _leftHandRotation: {x: 89.80218, y: 0.19958237, z: 270}
+  _rightHandPosition: {fileID: 0}
+  _maxAmmoClipCapacity: 0
+  _maxAmmo: 0
+  _currentAmmoClip: 0
+  _isSemiautomatic: 0

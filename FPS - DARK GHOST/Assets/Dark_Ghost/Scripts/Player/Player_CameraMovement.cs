@@ -4,6 +4,8 @@ public class Player_CameraMovement : MonoBehaviour
 {
     [SerializeField] private PlayerCore _playerCore;
     
+    [Header("=== CAMERA PARAMETERS ===")]
+    [Space(10)]
     [SerializeField] private Transform _playerBody;
 
     [Header("=== SENSITIVITY PARAMETERS ===")]
@@ -30,6 +32,9 @@ public class Player_CameraMovement : MonoBehaviour
         CameraControl();
     }
 
+    /// <summary>
+    /// Método que hace que podamos controlar la cámara con el mouse;
+    /// </summary>
     private void CameraControl()
     {
         //Obtenemos el Input del Mouse;

@@ -206,8 +206,158 @@ public partial class @Player_IA: IInputActionCollection2, IDisposable
         {
             ""name"": ""Actions"",
             ""id"": ""340f1103-9742-406f-9658-ed92d611ba36"",
-            ""actions"": [],
-            ""bindings"": []
+            ""actions"": [
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""5ee131a8-23eb-4b35-b077-d1c38fe82e00"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""e6219e5c-41fe-4032-8dd2-27a680b978cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch_Up_Down"",
+                    ""type"": ""Value"",
+                    ""id"": ""da60a970-eaa9-477f-9868-3ac3d9be7e8b"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""dcc6d83c-99c5-42fa-932d-89875d334452"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74280600-8aa8-498f-86d8-1f996e155a68"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a06f2731-a2b9-4508-a3e3-82b62ab7e2c0"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch_Up_Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""WeaponActions"",
+            ""id"": ""f656a537-e955-4ba4-b3b7-25db358d3565"",
+            ""actions"": [
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""85b875d8-dffb-4840-bbcc-0d65cfa2dc43"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""1171ada0-1f27-4462-80b8-57eee40cad3f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""3ba11d81-51c2-48e5-b02a-be94d6b26169"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inspect"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa6e26bd-d885-4806-849f-7f0b6f71eddf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""df93353b-420a-48a4-b7ce-7c2cfa6ae622"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0a5d5da-fc9e-4600-ad8f-27816f6ca463"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71796cf4-7a43-42e6-8dc3-ab852d2ce123"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f219bebb-3a08-4ad7-a8f1-e944fb68ce52"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inspect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -224,6 +374,15 @@ public partial class @Player_IA: IInputActionCollection2, IDisposable
         m_Movement_Crouch = m_Movement.FindAction("Crouch", throwIfNotFound: true);
         // Actions
         m_Actions = asset.FindActionMap("Actions", throwIfNotFound: true);
+        m_Actions_Interact = m_Actions.FindAction("Interact", throwIfNotFound: true);
+        m_Actions_Drop = m_Actions.FindAction("Drop", throwIfNotFound: true);
+        m_Actions_Switch_Up_Down = m_Actions.FindAction("Switch_Up_Down", throwIfNotFound: true);
+        // WeaponActions
+        m_WeaponActions = asset.FindActionMap("WeaponActions", throwIfNotFound: true);
+        m_WeaponActions_Shoot = m_WeaponActions.FindAction("Shoot", throwIfNotFound: true);
+        m_WeaponActions_Aim = m_WeaponActions.FindAction("Aim", throwIfNotFound: true);
+        m_WeaponActions_Reload = m_WeaponActions.FindAction("Reload", throwIfNotFound: true);
+        m_WeaponActions_Inspect = m_WeaponActions.FindAction("Inspect", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -409,10 +568,16 @@ public partial class @Player_IA: IInputActionCollection2, IDisposable
     // Actions
     private readonly InputActionMap m_Actions;
     private List<IActionsActions> m_ActionsActionsCallbackInterfaces = new List<IActionsActions>();
+    private readonly InputAction m_Actions_Interact;
+    private readonly InputAction m_Actions_Drop;
+    private readonly InputAction m_Actions_Switch_Up_Down;
     public struct ActionsActions
     {
         private @Player_IA m_Wrapper;
         public ActionsActions(@Player_IA wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Interact => m_Wrapper.m_Actions_Interact;
+        public InputAction @Drop => m_Wrapper.m_Actions_Drop;
+        public InputAction @Switch_Up_Down => m_Wrapper.m_Actions_Switch_Up_Down;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -422,10 +587,28 @@ public partial class @Player_IA: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_ActionsActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_ActionsActionsCallbackInterfaces.Add(instance);
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Drop.started += instance.OnDrop;
+            @Drop.performed += instance.OnDrop;
+            @Drop.canceled += instance.OnDrop;
+            @Switch_Up_Down.started += instance.OnSwitch_Up_Down;
+            @Switch_Up_Down.performed += instance.OnSwitch_Up_Down;
+            @Switch_Up_Down.canceled += instance.OnSwitch_Up_Down;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
         {
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Drop.started -= instance.OnDrop;
+            @Drop.performed -= instance.OnDrop;
+            @Drop.canceled -= instance.OnDrop;
+            @Switch_Up_Down.started -= instance.OnSwitch_Up_Down;
+            @Switch_Up_Down.performed -= instance.OnSwitch_Up_Down;
+            @Switch_Up_Down.canceled -= instance.OnSwitch_Up_Down;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -443,6 +626,76 @@ public partial class @Player_IA: IInputActionCollection2, IDisposable
         }
     }
     public ActionsActions @Actions => new ActionsActions(this);
+
+    // WeaponActions
+    private readonly InputActionMap m_WeaponActions;
+    private List<IWeaponActionsActions> m_WeaponActionsActionsCallbackInterfaces = new List<IWeaponActionsActions>();
+    private readonly InputAction m_WeaponActions_Shoot;
+    private readonly InputAction m_WeaponActions_Aim;
+    private readonly InputAction m_WeaponActions_Reload;
+    private readonly InputAction m_WeaponActions_Inspect;
+    public struct WeaponActionsActions
+    {
+        private @Player_IA m_Wrapper;
+        public WeaponActionsActions(@Player_IA wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Shoot => m_Wrapper.m_WeaponActions_Shoot;
+        public InputAction @Aim => m_Wrapper.m_WeaponActions_Aim;
+        public InputAction @Reload => m_Wrapper.m_WeaponActions_Reload;
+        public InputAction @Inspect => m_Wrapper.m_WeaponActions_Inspect;
+        public InputActionMap Get() { return m_Wrapper.m_WeaponActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(WeaponActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IWeaponActionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_WeaponActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_WeaponActionsActionsCallbackInterfaces.Add(instance);
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
+            @Inspect.started += instance.OnInspect;
+            @Inspect.performed += instance.OnInspect;
+            @Inspect.canceled += instance.OnInspect;
+        }
+
+        private void UnregisterCallbacks(IWeaponActionsActions instance)
+        {
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
+            @Inspect.started -= instance.OnInspect;
+            @Inspect.performed -= instance.OnInspect;
+            @Inspect.canceled -= instance.OnInspect;
+        }
+
+        public void RemoveCallbacks(IWeaponActionsActions instance)
+        {
+            if (m_Wrapper.m_WeaponActionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IWeaponActionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_WeaponActionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_WeaponActionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public WeaponActionsActions @WeaponActions => new WeaponActionsActions(this);
     public interface ICameraActions
     {
         void OnMouseX(InputAction.CallbackContext context);
@@ -457,5 +710,15 @@ public partial class @Player_IA: IInputActionCollection2, IDisposable
     }
     public interface IActionsActions
     {
+        void OnInteract(InputAction.CallbackContext context);
+        void OnDrop(InputAction.CallbackContext context);
+        void OnSwitch_Up_Down(InputAction.CallbackContext context);
+    }
+    public interface IWeaponActionsActions
+    {
+        void OnShoot(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
+        void OnInspect(InputAction.CallbackContext context);
     }
 }
